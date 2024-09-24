@@ -1,10 +1,7 @@
 "use client"
 
 import React from 'react'
-import NavBar from '@/components/navbar'
-import Header from '@/components/header'
 import Slider from '@/components/slider'
-import Design1 from "../public/designs/design-1.png"
 
 const slidesData = [
   {
@@ -57,18 +54,6 @@ const slidesData = [
     image: "/designs/design-7.png",
   }
 ]
-
-const images = [
-  "/designs/design-1.png",
-  "/designs/design-2.png",
-  "/designs/design-3.png",
-  "/designs/design-4.png",
-  "/designs/design-5.png",
-  "/designs/design-6.png",
-  "/designs/design-7.png",
-  "/designs/design-8.png",
-]
-
 const Home = () => {
   
   return (
