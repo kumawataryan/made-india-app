@@ -1,8 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Heart } from "lucide-react"
+import { Heart } from "lucide-react";
 import { CircleX } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react"; // Import icons for navigation buttons
+import Image from "next/image"
+import SlideLeftIcon from "../public/slide-left.svg"
+import SlideRightIcon from "../public/slide-right.svg"
 
 interface Slide {
     name: string;
@@ -18,19 +22,16 @@ const Slider = ({ slides }: { slides: Slide[] }) => {
     const [userResponses, setUserResponses] = useState<(null | "liked" | "disliked")[]>([]);
 
     useEffect(() => {
-        // Clear local storage on component mount (page reload)
         localStorage.clear();
-
-        // Initialize user responses with null for each slide
         const initialResponses = new Array(slides.length).fill(null);
         setUserResponses(initialResponses);
     }, [slides]);
 
     const handleResponse = (response: "liked" | "disliked") => {
         const updatedResponses = [...userResponses];
-        updatedResponses[currentIndex] = response; // Set the response for the current index
+        updatedResponses[currentIndex] = response;
         setUserResponses(updatedResponses);
-        localStorage.setItem("userResponses", JSON.stringify(updatedResponses)); // Store the responses in local storage
+        localStorage.setItem("userResponses", JSON.stringify(updatedResponses));
     };
 
     const handleRightSwipe = () => {
@@ -81,7 +82,6 @@ const Slider = ({ slides }: { slides: Slide[] }) => {
         touchEndX.current = null;
     };
 
-    // Calculate total likes and dislikes
     const totalLikes = userResponses.filter(response => response === "liked").length;
     const totalDislikes = userResponses.filter(response => response === "disliked").length;
 
@@ -137,14 +137,32 @@ const Slider = ({ slides }: { slides: Slide[] }) => {
                             }}
                         />
                     )}
+
+                    {/* Navigation Buttons */}
+                    {currentIndex > 0 && (
+                        <button
+                            onClick={handleLeftSwipe}
+                            className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 animate-slide-left"
+                        >
+                            <Image src={SlideLeftIcon} width={24} height={24} alt="slide-left"></Image>
+                        </button>
+                    )}
+
+                    {currentIndex < slides.length - 1 && (
+                        <button
+                            onClick={handleRightSwipe}
+                            className="absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 animate-slide-right"
+                        >
+                            <Image src={SlideRightIcon} width={24} height={24} alt="slide-left"></Image>
+                        </button>
+                    )}
                 </div>
 
-                {/* Display name and description or results below the image */}
                 <div className="mt-4 text-center">
                     {currentIndex < slides.length - 1 ? (
                         <>
                             <h3 className="text-lg font-bold">{slides[currentIndex].name}</h3>
-                            <p>{slides[currentIndex].description}</p>
+                            {/* <p>{slides[currentIndex].description}</p> */}
                             <div className="mt-4 flex items-center justify-center">
                                 {userResponses[currentIndex] === null ? (
                                     <>

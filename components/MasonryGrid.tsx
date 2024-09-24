@@ -10,6 +10,13 @@ const images = [
   "/designs/design-6.png",
   "/designs/design-7.png",
   "/designs/design-8.png",
+  "/designs/design-9.jpg",
+  "/designs/design-10.jpg",
+  "/designs/design-11.jpg",
+  "/designs/design-12.jpg",
+  "/designs/design-13.jpg",
+  "/designs/design-14.jpg",
+  "/designs/design-15.jpg",
 ];
 
 export default function MasonryGrid() {

@@ -12,6 +12,20 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        'slide-left': 'slide-left 1s infinite alternate',
+        'slide-right': 'slide-right 1s infinite alternate',
+      },
+      keyframes: {
+        'slide-left': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-5px)' },
+        },
+        'slide-right': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(5px)' },
+        },
+      },
     },
   },
   plugins: [],
