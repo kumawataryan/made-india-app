@@ -6,6 +6,7 @@ import { CircleX } from "lucide-react";
 import Image from "next/image"
 import SlideLeftIcon from "../public/slide-left.svg"
 import SlideRightIcon from "../public/slide-right.svg"
+import Screenshot from "../public/screenshot.png"
 
 interface Slide {
     name: string;
@@ -116,10 +117,16 @@ const Slider = ({ slides }: { slides: Slide[] }) => {
                     )}
 
                     {/* Current Image */}
-                    <img
-                        src={slides[currentIndex].image}
+                    <Image
+                        src={
+                            currentIndex === slides.length - 1
+                                ? Screenshot // specific image for the last index
+                                : slides[currentIndex].image
+                        }
                         alt="Current Slide"
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
+                        layout="fill" // Makes the image cover its container
+                        objectFit="cover" // Ensures the image covers the area properly
                         style={{
                             transform: `translateX(${translateX}px)`,
                         }}
