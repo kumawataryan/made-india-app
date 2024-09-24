@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Heart } from "lucide-react";
 import { CircleX } from "lucide-react";
-// import { ChevronLeft, ChevronRight } from "lucide-react"; // Import icons for navigation buttons
 import Image from "next/image"
 import SlideLeftIcon from "../public/slide-left.svg"
 import SlideRightIcon from "../public/slide-right.svg"
