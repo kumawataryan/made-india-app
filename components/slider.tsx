@@ -199,7 +199,7 @@ const Slider = ({ slides }: { slides: Slide[] }) => {
                         </>
                     ) : (
                         <div className="rounded">
-                            <div className="flex flex-col bg-gray-100 p-2 py-4 gap-1">
+                            <div className="flex flex-col bg-gray-100 p-2 py-4 gap-1 text-black">
                                 <p className="text-12px">You liked {totalLikes} designs.</p>
                                 <p className="text-12px">You disliked {totalDislikes} designs.</p>
                             </div>
